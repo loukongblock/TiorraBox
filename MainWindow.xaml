@@ -1,0 +1,578 @@
+﻿<Window x:Class="TiorraBox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TiorraBox"
+        mc:Ignorable="d"
+        Title="TiorraBox" MinHeight="600" MinWidth="960" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="#1f1f1f" SizeChanged="Window_SizeChanged" Closed="Window_Closed">
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            GlassFrameThickness="-1"
+            CaptionHeight="30"
+            ResizeBorderThickness="5" UseAeroCaptionButtons="False"/>
+    </WindowChrome.WindowChrome>
+    <Grid x:Name="grid" Margin="0">
+        <Border Height="40" VerticalAlignment="Top">
+            <Grid>
+                <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" x:Name="title">TiorraBox - v1.2.4 | Beta版本</TextBlock>
+                <Border Width="40" HorizontalAlignment="Right" Margin="0,0,42,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" WindowChrome.IsHitTestVisibleInChrome="True" x:Name="maxwindow" MouseLeftButtonDown="maxwindow_MouseLeftButtonDown">
+                    <Image Source="./maxwindow.png" Width="20" Height="20"></Image>
+                </Border>
+                <Border Width="40" HorizontalAlignment="Right" Margin="0,0,37,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" WindowChrome.IsHitTestVisibleInChrome="True" Visibility="Collapsed" x:Name="minwindow" MouseLeftButtonDown="minwindow_MouseLeftButtonDown">
+                    <Image Source="./minwindow.png" Width="15" Height="15"></Image>
+                </Border>
+                <Border Width="40" HorizontalAlignment="Right" Margin="0,0,0,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" WindowChrome.IsHitTestVisibleInChrome="True" x:Name="close" MouseLeftButtonDown="close_MouseLeftButtonDown">
+                    <Image Source="./close.png" Width="14" Height="14" Margin="0,0,1,0"></Image>
+                </Border>
+                <Border Width="40" HorizontalAlignment="Right" Margin="0,0,83,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" WindowChrome.IsHitTestVisibleInChrome="True" x:Name="hidewindow" MouseLeftButtonDown="hidewindow_MouseLeftButtonDown">
+                    <Image Source="./hidewindow.png" Width="24" Height="24"></Image>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="50" HorizontalAlignment="Left">
+            <Grid>
+                <Border CornerRadius="25" Background="#00b96b" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" x:Name="geren" WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Image Source="./user.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                </Border>
+                <Border CornerRadius="25" Background="#181818" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,55,0,0" BorderBrush="#2f2f2f" BorderThickness="1" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="chat" MouseLeftButtonDown="chat_MouseLeftButtonDown">
+                    <Image Source="./chat.png" Width="20" Height="20"></Image>
+                </Border>
+                <Border CornerRadius="25" Background="Transparent" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,95,0,0" BorderBrush="Transparent" BorderThickness="1" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="bushu" MouseLeftButtonDown="bushu_MouseLeftButtonDown">
+                    <Image Source="./bushu.png" Width="20" Height="20"></Image>
+                </Border>
+                <Border CornerRadius="25" Background="Transparent" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,135,0,0" BorderBrush="Transparent" BorderThickness="1" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="renshe" MouseLeftButtonDown="renshe_MouseLeftButtonDown" Visibility="Collapsed">
+                    <Image Source="./star.png" Width="20" Height="20"></Image>
+                </Border>
+                <Border CornerRadius="25" Background="Transparent" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,135,0,0" BorderBrush="Transparent" BorderThickness="1" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="vip" MouseLeftButtonDown="vip_MouseLeftButtonDown" Visibility="Collapsed">
+                    <Image Source="./shop.png" Width="20" Height="20"></Image>
+                </Border>
+                
+                <Border CornerRadius="25" Background="Transparent" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" BorderBrush="Transparent" BorderThickness="1" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" x:Name="setting" MouseLeftButtonDown="setting_MouseLeftButtonDown" Visibility="Collapsed">
+                    <Image Source="./setting.png" Width="20" Height="20"></Image>
+                </Border>
+                <Border CornerRadius="25" Background="Transparent" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" BorderBrush="Transparent" BorderThickness="1" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" x:Name="qution" MouseLeftButtonDown="qution_MouseLeftButtonDown" Visibility="Visible">
+                    <Image Source="./qution.png" Width="23" Height="23"></Image>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Margin="50,40,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8,0,0,0" BorderBrush="#2f2f2f" BorderThickness="1">
+            <Grid>
+
+            </Grid>
+        </Border>
+        <Border Margin="50,40,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8,0,0,0" BorderBrush="#2f2f2f" BorderThickness="1">
+
+            <Grid>
+
+                <ScrollViewer Name="ChatScrollViewer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="280,0,0,170" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                    <Grid>
+
+                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Margin="15,15,15,0" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6" Visibility="Collapsed">
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="Gray">TiorraBox.exe</TextBlock>
+                        </Border>
+
+                        <StackPanel Name="MessagesPanel" Margin="10,0,10,0" >
+                            
+                            <!--                          <Border CornerRadius="25" Background="#00b96b" Width="35" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,80,0,0">
+                                <Image Source="./user.png" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                            </Border>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,82,0,0" Foreground="White" FontWeight="Bold" FontSize="14">用户</TextBlock>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,105,0,0" Foreground="White" FontSize="10">
+                            2025/7/26
+                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,125,0,0" Foreground="White" FontSize="12">
+
+                            </TextBlock>-->
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+                <Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="130" Background="#1f1f1f" Margin="295,15,15,20" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="16">
+                    <Grid>
+                        <TextBox BorderThickness="0" Background="Transparent" Foreground="White" FontSize="14" Margin="15,15,15,15" x:Name="input" TextWrapping="Wrap"></TextBox>
+                        <Border Width="25" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,15,15" Background="#00b96b" CornerRadius="25" x:Name="send" MouseLeftButtonDown="send_MouseLeftButtonDown" Cursor="Hand">
+                            <Image Source="./send.png" Width="18" Height="18"></Image>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Width="280" BorderBrush="#2f2f2f" BorderThickness="0,0,1,0" HorizontalAlignment="Left">
+                    <Grid>
+                        <Border Height="45"  VerticalAlignment="Top" BorderBrush="#2f2f2f" BorderThickness="0,0,0,0.8">
+                            <Grid>
+                                <Border Height="50" HorizontalAlignment="Left" VerticalAlignment="Center" Background="Transparent" Width="50" Margin="50,0,0,0" BorderThickness="0,0,0,0" BorderBrush="BlueViolet" Cursor="Hand" x:Name="moxing" MouseLeftButtonDown="moxing_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"  FontSize="13" x:Name="moxingtext">模型</TextBlock>
+                                </Border>
+                                <Border Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Width="50" Margin="0,0,0,0" BorderThickness="0,0,0,0" BorderBrush="BlueViolet" Cursor="Hand" x:Name="huati" MouseLeftButtonDown="huati_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="13" x:Name="huatitext">话题</TextBlock>
+                                </Border>
+
+                                <Border Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Background="Transparent" Width="50" Margin="0,0,50,0" BorderThickness="0,0,0,0" BorderBrush="BlueViolet" Cursor="Hand" x:Name="shezhi" MouseLeftButtonDown="shezhi_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Gray" FontSize="13" x:Name="shezhitext">设置</TextBlock>
+                                </Border>
+                            </Grid>
+                        </Border>
+                        <Border VerticalAlignment="Stretch" Margin="0,45,0,0" x:Name="moxingborder">
+                            <Grid>
+                                <ScrollViewer Background="Transparent" VerticalAlignment="Stretch" Margin="0,40,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel x:Name="modellist">
+                                        <!-- <Border Width="250" Margin="0,0,0,0" Height="35" CornerRadius="18" Background="#252525" VerticalAlignment="Top" Cursor="Hand">
+                                                <Grid>
+                                                    <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                                                    <TextBlock HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">Deepseek-R1-Distill-Qwen-1.5B</TextBlock>
+                                                </Grid>
+                                            </Border> -->
+                                    </StackPanel>
+                                </ScrollViewer>
+                                <Border Width="250" Margin="0,5,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand" x:Name="openinputmodelname" MouseLeftButtonDown="openinputmodelname_MouseLeftButtonDown">
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" FontSize="13" Foreground="White">+添加模型</TextBlock>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                        </Border>
+                        <Border VerticalAlignment="Stretch" Margin="0,45,0,0" Background="#181818" x:Name="huatiborder" Visibility="Collapsed">
+                            <Grid>
+                                <Border Width="250" Margin="0,5,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand" x:Name="openaddchat" MouseLeftButtonDown="openaddchat_MouseLeftButtonDown">
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" FontSize="13" Foreground="White">+添加对话</TextBlock>
+                                    </Grid>
+                                </Border>
+                                <ScrollViewer Background="Transparent" VerticalAlignment="Stretch" Margin="0,40,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel x:Name="chatlist">
+                                        <Border Width="250" Margin="0,5,0,0" Height="35" CornerRadius="18" Background="#252525" VerticalAlignment="Top" Cursor="Hand">
+                                            <Grid>
+                                                <Image Source="./chat.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Width="22" Height="22"></Image>
+                                                <TextBlock HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">默认对话</TextBlock>
+                                            </Grid>
+                                        </Border>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                        
+                        <Border VerticalAlignment="Stretch" Margin="0,45,0,0" x:Name="shezhiborder" Background="#181818" Visibility="Collapsed">
+                            <Grid>
+                                <ScrollViewer Background="Transparent" VerticalAlignment="Stretch" Margin="0,0,0,0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden">
+                                    <StackPanel x:Name="shezhilist">
+                                        <Border Width="250" Margin="0,15,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand" Visibility="Visible">
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型对话记忆保存</TextBlock>
+                                                <Border Width="45" Height="20" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Center" Background="White" CornerRadius="8">
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black" FontSize="12" FontWeight="Bold" FontFamily="Nirmala UI">Beta</TextBlock>
+                                                </Border>
+                                                <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="#2f2f2f" CornerRadius="10" x:Name="openjiyibaocun" MouseLeftButtonDown="openjiyibaocun_MouseLeftButtonDown" Visibility="Visible">
+                                                    <Border Width="15" Height="15" CornerRadius="25" Background="White" HorizontalAlignment="Left" x:Name="isen"></Border>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="250" Margin="0,15,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand">
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型温度设置(推荐0.7)</TextBlock>
+                                                <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="Transparent" BorderBrush="#3f3f3f" BorderThickness="0,0,0,1.5" x:Name="moxingwendu" MouseLeftButtonDown="openjiyibaocun_MouseLeftButtonDown">
+                                                    <TextBox Background="Transparent" BorderThickness="0" Foreground="White" FontSize="14" TextAlignment="Center" x:Name="wendu"></TextBox>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="250" Margin="0,15,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand">
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型纠正度(推荐0.9 - 1.2)</TextBlock>
+                                                <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="Transparent" BorderBrush="#3f3f3f" BorderThickness="0,0,0,1.5">
+                                                    <TextBox Background="Transparent" BorderThickness="0" Foreground="White" FontSize="14" TextAlignment="Center" x:Name="chengfa"></TextBox>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="250" Margin="0,15,0,0" Height="220" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand">
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13">模型人设</TextBlock>
+                                                <Border Width="220" Height="200" HorizontalAlignment="Center" Margin="0,0,0,0" Background="Transparent" BorderBrush="#3f3f3f" BorderThickness="1.5" VerticalAlignment="Bottom" CornerRadius="8">
+                                                    <TextBox Background="Transparent" BorderThickness="0" Foreground="White" FontSize="14" Margin="10,10,10,10" x:Name="renshebianxie" TextWrapping="Wrap"></TextBox>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                    </StackPanel>
+
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Background="Black" Opacity="0.7" CornerRadius="8,0,0,0" x:Name="backgroundopcity" Visibility="Collapsed"></Border>
+                <Border Width="280" Background="#181818" CornerRadius="8" Height="240" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="modelinputborder" Visibility="Collapsed">
+                    <Grid>
+                        <Image Source="./close.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" Width="15" Height="15" x:Name="closeinputmodelname" MouseLeftButtonDown="closeinputmodelname_MouseLeftButtonDown"></Image>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,135" Foreground="White" FontSize="16" FontWeight="Bold">输入模型名字</TextBlock>
+                        <Border Background="#181818" CornerRadius="10" Height="35" Width="220" BorderBrush="#2f2f2f" BorderThickness="1" Margin="0,0,0,35">
+                            <TextBox Background="Transparent" BorderThickness="0" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" x:Name="modelnameinput">
+                            </TextBox>
+                        </Border>
+                        <Border Background="#00b96b" CornerRadius="10" Height="35" Width="220" Margin="0,80,0,0" x:Name="addmodel" MouseLeftButtonDown="addmodel_MouseLeftButtonDown">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="13" FontWeight="Bold">确定</TextBlock>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Width="280" Background="#181818" CornerRadius="8" Height="240" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="chatinputborder" Visibility="Collapsed">
+                    <Grid>
+                        <Image Source="./close.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" Width="15" Height="15" x:Name="closeinputchatname" MouseLeftButtonDown="closeinputchatname_MouseLeftButtonDown"></Image>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,135" Foreground="White" FontSize="16" FontWeight="Bold">输入对话标题</TextBlock>
+                        <Border Background="#181818" CornerRadius="10" Height="35" Width="220" BorderBrush="#2f2f2f" BorderThickness="1" Margin="0,0,0,35">
+                            <TextBox Background="Transparent" BorderThickness="0" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" x:Name="chatnameinput">
+                            </TextBox>
+                        </Border>
+                        <Border Background="#00b96b" CornerRadius="10" Height="35" Width="220" Margin="0,80,0,0" x:Name="addchat" MouseLeftButtonDown="addchat_MouseLeftButtonDown">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="13" FontWeight="Bold">确定</TextBlock>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Margin="50,40,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8,0,0,0" BorderBrush="#2f2f2f" BorderThickness="1" Visibility="Collapsed" x:Name="fastbushu">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White" Margin="20,20,0,0">一键部署</TextBlock>
+                <Border Background="Black" CornerRadius="8,0,0,0" Opacity="0.8"></Border>
+                <Border Background="#111111" BorderBrush="#2f2f2f" BorderThickness="1" Width="560" Height="360" CornerRadius="8">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontWeight="Bold" FontSize="14">选择你要部署的大模型</TextBlock>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="deepseekr1" MouseLeftButtonDown="deepseekr1_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="155,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-V3</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="310,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Kimi-K2</TextBlock>
+                                <Image Source="./kimilogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="25" Height="25"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Hunyuan-W1</TextBlock>
+                                <Image Source="./hunyuanlogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="25" Height="25"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,100,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Qwen-V3-T</TextBlock>
+                                <Image Source="./qwenlogo.png" HorizontalAlignment="Left" Margin="8,0,0,0" Width="23" Height="23"></Image>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border Background="#111111" BorderBrush="#2f2f2f" BorderThickness="1" Width="560" Height="360" CornerRadius="8">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontWeight="Bold" FontSize="14">选择大模型的版本</TextBlock>
+                        <Border Width="120" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="deepseekr1ai" MouseLeftButtonDown="deepseekr1_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="155" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="deepseekr10528" MouseLeftButtonDown="deepseekr10528_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1-0528</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="225" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="295,50,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="DeepSeekR1DistillQwen15B" MouseLeftButtonDown="DeepSeekR1DistillQwen15B_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1-Distill-Qwen-1.5B</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="225" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="11,100,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="DeepSeekR1DistillQwen32B" MouseLeftButtonDown="DeepSeekR1DistillQwen32B_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1-Distill-Qwen-32B</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                        <Border Width="220" Height="35" Background="Transparent" CornerRadius="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="240,100,0,0" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" x:Name="DeepSeekR1DistillQwen7B" MouseLeftButtonDown="DeepSeekR1DistillQwen7B_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="35,0,0,0" VerticalAlignment="Center">Deepseek-R1-Distill-Qwen-7B</TextBlock>
+                                <Image Source="./deepseeklogo.png" HorizontalAlignment="Left" Margin="5,0,0,0" Width="35" Height="35"></Image>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Margin="50,40,0,0"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Background="#181818"
+        CornerRadius="8,0,0,0"
+        BorderBrush="#2f2f2f"
+        BorderThickness="1"
+        x:Name="proment"
+        Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontWeight="Bold" FontSize="15">模型人设</TextBlock>
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+
+                    <WrapPanel Orientation="Horizontal" >
+
+                        <Border Width="300" Height="150" Margin="20,60,0,0" BorderThickness="1.5" BorderBrush="#2f2f2f" CornerRadius="10"></Border>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        <Border Margin="50,40,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8,0,0,0" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="shop" Visibility="Collapsed">
+            <Grid>
+                
+                <ScrollViewer>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,25,0,0" FontWeight="Bold" Foreground="White" FontSize="16">商城</TextBlock>
+                        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,25,25,0" FontWeight="Bold" Foreground="White" FontSize="16">我的积分:4011</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="80,25,0,0" FontWeight="Bold" Foreground="White" FontSize="16">输入激活码</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,205,0,0" FontWeight="Bold" Foreground="White" FontSize="16">每日签到</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,395,0,0" FontWeight="Bold" Foreground="White" FontSize="16">积分商城</TextBlock>
+                        <Border Width="260" Height="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,435,0,0" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6">
+                            <Grid>
+                                <Border Background="White" Width="45" Height="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" CornerRadius="7">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">限时</TextBlock>
+                                </Border>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Foreground="White" FontWeight="Bold">5积分秒杀VIP I 每人限购一次</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,0,0" Foreground="White">在购买后的指定期限获得以下特权</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" Foreground="White"> - 获得TiorraBox - Plus使用资格</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,75,0,0" Foreground="White"> - 获得TiorraBox - Plus更多模型/功能支持</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,95,0,0" Foreground="White"> - 每日可免费领取15商城积分</TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border Width="260" Height="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,245,0,0" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Foreground="White" FontWeight="Bold">每日签到</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,0,0" Foreground="White">签到后获取以下奖励</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" Foreground="White"> - 获得TiorraBox 5积分</TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border Width="260" Height="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,65,0,0" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6" x:Name="buyvip1" MouseLeftButtonDown="buyvip1_MouseLeftButtonDown">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Foreground="White" FontWeight="Bold">购买VIP I</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,0,0" Foreground="White">在购买后的指定期限获得以下特权</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" Foreground="White"> - 获得TiorraBox - Plus使用资格</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,75,0,0" Foreground="White"> - 获得TiorraBox - Plus更多模型/功能支持</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,95,0,0" Foreground="White"> - 每日可免费领取15商城积分</TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border Width="260" Height="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300,65,0,0" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Foreground="White" FontWeight="Bold">购买VIP II</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,0,0" Foreground="White">在购买后的指定期限获得以下特权</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" Foreground="White"> - 获得VIP I特权(包括每日积分)</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,75,0,0" Foreground="White"> - TiorraBox - Lite版资格(包含Plus版功能)</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,95,0,0" Foreground="White"> - Lite版无求赞助广告，支持自定义主题颜色</TextBlock>
+                            </Grid>
+                        </Border>
+                        <Border Width="260" Height="125" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="575,65,0,0" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="6">
+                            <Grid>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,15,0,0" Foreground="White" FontWeight="Bold">购买VIP III</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,35,0,0" Foreground="White">在购买后的指定期限获得以下特权</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,55,0,0" Foreground="White"> - 获得VIP II特权(包括每日积分)</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,75,0,0" Foreground="White"> - TiorraBox - Beta资格，添加11种实用功能</TextBlock>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,95,0,0" Foreground="White"> - 优先获取最新更新，第一个尝鲜</TextBlock>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ScrollViewer>
+                <Border Background="Black" Opacity="0.4" CornerRadius="8,0,0,0" x:Name="buybackground" Visibility="Collapsed">
+                </Border>
+                <Border Width="600" Height="360" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="buyborder" Visibility="Collapsed">
+                    <Grid>
+                        <Image Source="./close.png" Width="15" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,15,15,0" x:Name="closebuy"  MouseLeftButtonDown="closebuy_MouseLeftButtonDown"></Image>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" FontSize="16" Margin="20,20,0,0">购买VIP I</TextBlock>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" Margin="20,50,0,0">购买期限</TextBlock>
+                        <Border Width="270" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,85,0,0" CornerRadius="12" Background="#0f0f0f">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="90" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" CornerRadius="12,0,0,12" Background="#1f1f1f" x:Name="yigeyue" MouseLeftButtonDown="yigeyue_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">一个月</TextBlock>
+                                </Border>
+                                <Border Width="90" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" CornerRadius="0,0,0,0" Background="Transparent" x:Name="liugeyue" MouseLeftButtonDown="liugeyue_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">6个月</TextBlock>
+                                </Border>
+                                <Border Width="90" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0" CornerRadius="0,12,12,0" Background="Transparent" x:Name="yinian" MouseLeftButtonDown="yinian_MouseLeftButtonDown">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">一年</TextBlock>
+                                </Border>
+                            </StackPanel>
+                            
+                            </Border>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" Margin="20,140,0,0">购买方式</TextBlock>
+                        <Border Width="380" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,25,0,0" CornerRadius="12" Background="#1f1f1f" x:Name="aifadian" MouseLeftButtonDown="aifadian_MouseLeftButtonDown">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">爱发电激活码(购买后会给你激活码，输入到下面的框里)</TextBlock>
+                        </Border>
+                        <Border Width="70" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" CornerRadius="7" Background="#00b96b" x:Name="jihuo" MouseLeftButtonDown="zhifu_MouseLeftButtonDown">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14" FontWeight="Bold">激活</TextBlock>
+                        </Border>
+                        <Border Width="70" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,100,20" CornerRadius="7" Background="#00b96b" x:Name="goumai">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14" FontWeight="Bold">购买</TextBlock>
+                        </Border>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="16" Margin="20,225,0,0">输入激活码</TextBlock>
+                        <Border Width="380" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,200,0,0" CornerRadius="12" Background="#1f1f1f" x:Name="jihuomaborder">
+                            <TextBox BorderThickness="0" Background="Transparent" TextAlignment="Center" FontSize="16" VerticalAlignment="Center" Foreground="White" x:Name="jihuoma"></TextBox>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+ 
+        <Border Margin="50,40,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8,0,0,0" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="gerenyemian" Visibility="Collapsed">
+            <Grid>
+                <Border Height="120" VerticalAlignment="Top" Margin="20,20,20,0" Background="#202020" CornerRadius="8">
+                    <Grid>
+                        <Border CornerRadius="45" Background="#00b96b" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
+                            <Image Source="./user.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                        </Border>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0" FontWeight="Bold" Foreground="White" FontSize="20">TiorraDev</TextBlock>
+                        <Border Width="55" Height="20" HorizontalAlignment="Left" Margin="220,0,0,0" VerticalAlignment="Center" Background="White" CornerRadius="6">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black" FontSize="12" FontWeight="Bold" FontStyle="Italic" FontFamily="Nirmala UI">VIP</TextBlock>
+                        </Border>
+                        <Border Width="65" Height="25" HorizontalAlignment="Right" Margin="0,0,40,0" VerticalAlignment="Center" Background="Transparent" CornerRadius="6" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Nirmala UI">退出登录</TextBlock>
+                        </Border>
+                        <Border Width="65" Height="25" HorizontalAlignment="Right" Margin="0,0,120,0" VerticalAlignment="Center" Background="Transparent" CornerRadius="6" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Nirmala UI">更改密码</TextBlock>
+                        </Border>
+                        <Border Width="65" Height="25" HorizontalAlignment="Right" Margin="0,0,200,0" VerticalAlignment="Center" Background="Transparent" CornerRadius="6" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1">
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="White" FontSize="14" FontWeight="Bold" FontFamily="Nirmala UI">更改名字</TextBlock>
+                        </Border>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Background="Black" Opacity="0.4" x:Name="opcity04" Visibility="Collapsed"></Border>
+        <Border Width="480" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="powerby" Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18">Making from loukong block | 制作来自镂空方块</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Foreground="White" FontSize="15">Current version v1.2.4 | 当前版本 v1.2.4</TextBlock>
+                <Border Width="130" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,80,0,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="NewtonsoftJson" MouseLeftButtonDown="NewtonsoftJson_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">Newtonsoft.Json</TextBlock>
+                </Border>
+                <Border Width="135" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,120,0,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="ookiidialogswpf" MouseLeftButtonDown="ookiidialogswpf_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">ookii-dialogs-wpf
+                    </TextBlock>
+                </Border>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="queding1" MouseLeftButtonDown="queding1_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">确定</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="400" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="NewtonsoftJsonborder" Visibility="Collapsed">
+            <Grid>
+                <ScrollViewer Margin="0,0,0,0">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18" TextWrapping="Wrap">
+                        The MIT License (MIT)
+
+Copyright (c) 2007 James Newton-King
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+                    </TextBlock>
+                </ScrollViewer>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="8" x:Name="q" MouseLeftButtonDown="queding1_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">确定</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="400" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="ookiidialogsborder" Visibility="Collapsed">
+            <Grid>
+                <ScrollViewer Margin="0,0,0,0">
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18" TextWrapping="Wrap">
+BSD 3-Clause License
+
+Copyright (c) C. Augusto Proiete 2018-2021
+Copyright (c) Sven Groot         2009-2018
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                    </TextBlock>
+                </ScrollViewer>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="8"  MouseLeftButtonDown="queding1_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">确定</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="mianzeshangming" Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18">免责声明</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Foreground="White" FontSize="16">本软件已附赠所有需要版权的库的版权证书</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,80,0,0" Foreground="White" FontSize="16">可随时点击左下角问号图标查看</TextBlock>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="qqq" MouseLeftButtonDown="queding1_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">确定</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="zanzhutanchuang" Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18">你已经使用TiorraBox跟ai聊了</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,20,0,0" Foreground="White" FontSize="18" x:Name="cishu"></TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Foreground="White" FontSize="15">能不能考虑赞助一下呢~</TextBlock>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="meiwenti" MouseLeftButtonDown="meiwenti_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">没问题!</TextBlock>
+                </Border>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,120,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="xiaciyiding" MouseLeftButtonDown="xiaciyiding_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">下次一定</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="8" x:Name="bushujiemian" Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18" x:Name="bushuchenggong">正在部署..</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Foreground="White" FontSize="15" x:Name="tixingdengdai">完成后会有提醒哦~不用担心</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,80,0,0" Foreground="White" FontSize="15" x:Name="tbtext">0kb</TextBlock>
+                <TextBlock x:Name="TbTotal" Text="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,80,0,0" FontSize="15"/>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="queding" MouseLeftButtonDown="queding_MouseLeftButtonDown" Visibility="Collapsed">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">确定</TextBlock>
+                </Border>
+                <Border Width="90" Height="35" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" CornerRadius="18" x:Name="quxiao" MouseLeftButtonDown="quxiao_MouseLeftButtonDown">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="14">取消</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+        <Border Width="480" Height="200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#181818" CornerRadius="8" BorderBrush="#2f2f2f" BorderThickness="1" x:Name="kamiborder" Visibility="Collapsed">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0" Foreground="White" FontSize="18">Login | 登录</TextBlock>
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,50,0,0" Foreground="White" FontSize="18">输入你的唯一登录卡密</TextBlock>
+                <Border Height="35  " HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="20,10,20,0" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="8">
+                    <TextBox BorderThickness="0" Background="Transparent" TextAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="13" Foreground="White"></TextBox>
+                </Border>
+                <Border Height="30" Width="70" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" BorderBrush="#2f2f2f" BorderThickness="1" CornerRadius="8" Background="#00b96b">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="13">登录</TextBlock>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
