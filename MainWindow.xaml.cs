@@ -38,6 +38,7 @@ using System.Globalization;
 using System.Security.Principal;
 using System.Security.Policy;
 using System.Runtime.InteropServices.ComTypes;
+using static TiorraBox.MainWindow;
 
 namespace TiorraBox
 {
@@ -86,11 +87,12 @@ namespace TiorraBox
 
         public class Config
         {
-            public bool jiyi { get; set; } = false;
+            public bool jiyi { get; set; } = true;
             public double wendu { get; set; } = 0.7;
             public int shangxiawen { get; set; } = 5;
             public bool zhedie { get; set; } = false;
 
+            public int keepRounds { get; set; } = 2;   // 默认保留 2 轮
             public double chengfa { get; set; } = 1.1;
             public string renshe { get; set; } = "You are DeepSeek-R1, a reasoning model. Think step by step inside <think> tags. 请使用提问者提问时所用的语言回答";
         }
@@ -212,6 +214,7 @@ namespace TiorraBox
             }
             wendu.Text = _cfg.wendu.ToString(CultureInfo.InvariantCulture);
             chengfa.Text = _cfg.chengfa.ToString(CultureInfo.InvariantCulture);
+            lunshu.Text = _cfg.keepRounds.ToString(CultureInfo.InvariantCulture);
         }
         private const string MutexName = "Global\\TiorraBox";
 
@@ -757,6 +760,7 @@ namespace TiorraBox
 
         private async void send_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            _cfg.keepRounds = int.Parse(lunshu.Text);
             _cfg.renshe = renshebianxie.Text;
             if (isen.HorizontalAlignment == HorizontalAlignment.Right)
             {
@@ -829,11 +833,16 @@ namespace TiorraBox
             _history.Add(new ChatMessage { Role = "user", Text = message });
             AddMessageToUI("我", message, true);
             input.Clear();
+            int lun = int.Parse(lunshu.Text);   // 假设用户填的是整数
+            int keep = _cfg.keepRounds * 2;
+            var memory = _history.Skip(Math.Max(0, _history.Count - keep)).ToList();
 
+            // 3. 照旧发出去
+            string historyJson = JsonSerializer.Serialize(memory);
             // 拼完整 prompt（系统+历史）
             if (_memoryEnabled == true)
             {
-                var prompt = _history.ToString();
+                var prompt = historyJson;
             var resp = await SendPromptAsync(prompt + "以上是历史对话，请牢记，以下是当前问题:" + message);
             string aiAnswer = await ReceiveCompletionAsync(resp);
             // 记录 AI 回复
@@ -1086,7 +1095,7 @@ private string PromptUserForFolder()
 
         private async Task<bool> DownloadMultipleFilesAsync(string folder, List<string> downloadUrls)
         {
-            const int BUFFER = 358400;             
+            const int BUFFER = 45000;             
 
             if (_httpClient == null)
             {
@@ -1881,6 +1890,7 @@ private string PromptUserForFolder()
 
         private void Window_Closed(object sender, EventArgs e)
         {
+            _cfg.keepRounds = int.Parse(lunshu.Text);
             _cfg.renshe = renshebianxie.Text;
             if (isen.HorizontalAlignment == HorizontalAlignment.Right)
             {
@@ -1935,6 +1945,7 @@ private string PromptUserForFolder()
 
         private void huati_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            _cfg.keepRounds = int.Parse(lunshu.Text);
             _cfg.renshe = renshebianxie.Text;
             if (isen.HorizontalAlignment == HorizontalAlignment.Right)
             {
@@ -1963,6 +1974,7 @@ private string PromptUserForFolder()
 
         private void moxing_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            _cfg.keepRounds = int.Parse(lunshu.Text);
             _cfg.renshe = renshebianxie.Text;
             if (isen.HorizontalAlignment == HorizontalAlignment.Right)
             {
@@ -2064,6 +2076,7 @@ private string PromptUserForFolder()
 
         private void shezhi_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            _cfg.keepRounds = int.Parse(lunshu.Text);
             renshebianxie.Text = _cfg.renshe;
             if (isen.HorizontalAlignment == HorizontalAlignment.Right)
             {

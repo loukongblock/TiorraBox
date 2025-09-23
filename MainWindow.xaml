@@ -15,7 +15,8 @@
     <Grid x:Name="grid" Margin="0">
         <Border Height="40" VerticalAlignment="Top">
             <Grid>
-                <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" x:Name="title">TiorraBox - v1.2.4 | Beta版本</TextBlock>
+               
+                <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" x:Name="title">TiorraBox - v1.2.4 | BETA版本</TextBlock>
                 <Border Width="40" HorizontalAlignment="Right" Margin="0,0,42,0" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" WindowChrome.IsHitTestVisibleInChrome="True" x:Name="maxwindow" MouseLeftButtonDown="maxwindow_MouseLeftButtonDown">
                     <Image Source="./maxwindow.png" Width="20" Height="20"></Image>
                 </Border>
@@ -82,7 +83,7 @@
                             2025/7/26
                             </TextBlock>
                             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,125,0,0" Foreground="White" FontSize="12">
-
+                             
                             </TextBlock>-->
                         </StackPanel>
                     </Grid>
@@ -159,7 +160,7 @@
                                             <Grid>
                                                 <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型对话记忆保存</TextBlock>
                                                 <Border Width="45" Height="20" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Center" Background="White" CornerRadius="8">
-                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black" FontSize="12" FontWeight="Bold" FontFamily="Nirmala UI">Beta</TextBlock>
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  Foreground="Black" FontSize="12" FontWeight="Bold" FontFamily="Nirmala UI">BETA</TextBlock>
                                                 </Border>
                                                 <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="#2f2f2f" CornerRadius="10" x:Name="openjiyibaocun" MouseLeftButtonDown="openjiyibaocun_MouseLeftButtonDown" Visibility="Visible">
                                                     <Border Width="15" Height="15" CornerRadius="25" Background="White" HorizontalAlignment="Left" x:Name="isen"></Border>
@@ -171,6 +172,14 @@
                                                 <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型温度设置(推荐0.7)</TextBlock>
                                                 <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="Transparent" BorderBrush="#3f3f3f" BorderThickness="0,0,0,1.5" x:Name="moxingwendu" MouseLeftButtonDown="openjiyibaocun_MouseLeftButtonDown">
                                                     <TextBox Background="Transparent" BorderThickness="0" Foreground="White" FontSize="14" TextAlignment="Center" x:Name="wendu"></TextBox>
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+                                        <Border Width="250" Margin="0,15,0,0" Height="35" CornerRadius="18" Background="Transparent" VerticalAlignment="Top" Cursor="Hand">
+                                            <Grid>
+                                                <TextBlock HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="13">模型记忆保留轮数(推荐5)</TextBlock>
+                                                <Border Width="45" Height="20" HorizontalAlignment="Right" Margin="0,0,15,0" Background="Transparent" BorderBrush="#3f3f3f" BorderThickness="0,0,0,1.5" x:Name="moxinglunshu" MouseLeftButtonDown="openjiyibaocun_MouseLeftButtonDown">
+                                                    <TextBox Background="Transparent" BorderThickness="0" Foreground="White" FontSize="14" TextAlignment="Center" x:Name="lunshu"></TextBox>
                                                 </Border>
                                             </Grid>
                                         </Border>
